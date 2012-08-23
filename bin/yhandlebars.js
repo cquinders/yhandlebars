@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var optimist = require("optimist")
-		.usage("Precompile handlebar templates.\nUsage: $0 template ...", {
+		.usage("Precompile handlebar templates.\nUsage: $0 <template> ...", {
 			"f": {
 				"type": "string",
 				"description": "Output File",
@@ -72,7 +72,7 @@ var fs = require("fs"),
 	template = argv._[0],
 	known = {},
 	precompiledTemplates = [],
-	moduleName = (argv.output) ? argv.output.split("/").pop().replace(".js", "") : "templates",
+	moduleName = (argv.output) ? argv.output.split("/").pop().replace(".js", "") : "handlebars-templates",
 	outputTemplateFile = (argv.simple) ? "simple.handlebars" : "module.handlebars",
 	outputTemplate,
 	outputFiles = [],
