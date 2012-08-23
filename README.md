@@ -1,9 +1,9 @@
 # yhandlebars
 
-yhandlebars is a [http://www.handlebarsjs.com](handlebars.js) CLI for precompiling 
-[http://http://yuilibrary.com/yui/docs/handlebars/](YUI handlebars) templates as YUI modules.
-Checkout the official Handlebars docs site at [http://www.handlebarsjs.com](www.handlebarsjs.com) 
-and the official YUI Handlebars docs at [http://yuilibrary.com/yui/docs/handlebars/](yuilibrary.com/yui/docs/handlebars/).
+yhandlebars is a [handlebars.js](http://www.handlebarsjs.com) CLI for precompiling 
+[YUI handlebars](http://yuilibrary.com/yui/docs/handlebars/) templates as YUI modules.
+Checkout the official Handlebars docs site at [www.handlebarsjs.com](http://www.handlebarsjs.com) 
+and the official YUI Handlebars docs at [yuilibrary.com/yui/docs/handlebars/](http://yuilibrary.com/yui/docs/handlebars/).
 
 ## Precompiling Templates
 
