@@ -4,7 +4,6 @@
     "description": "Command line tool to precompile Handlebars templates as YUI modules",
     "author": "Christian Hermann Quinders <c.quinders@gmail.com>",
     "bugs": { "web" : "http://github.com/clickholddrag/yhandlebars/issues" },
-    "os": ["darwin", "linux"],
     "contributors": [
         "Christian Hermann Quinders <c.quinders@gmail.com>"
     ],
