@@ -1,6 +1,6 @@
 {
     "name": "yhandlebars",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Command line tool to precompile Handlebars templates as YUI modules",
     "author": "Christian Hermann Quinders <c.quinders@gmail.com>",
     "bugs": { "web" : "http://github.com/clickholddrag/yhandlebars/issues" },
@@ -18,8 +18,6 @@
         "yui" : ">=3.6.0",
         "uglify-js": "~1.2"
     },
-    "licenses":[
-    ],
     "repository": {
         "type":"git",
         "url":"http://github.com/clickholddrag/yhandlebars.git"
