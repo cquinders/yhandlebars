@@ -27,6 +27,11 @@ var optimist = require("optimist")
 				"description": "Output template function only.",
 				"alias": "simple"
 			},
+			"p": {
+				"type": "boolean",
+				"description": "Output module without YUI.add(...) wrapper.",
+				"alias": "plain"
+			},
 			"r": {
 				"type": "string",
 				"description": "Template root. Base value that will be stripped from template names.",
@@ -83,6 +88,7 @@ var fs = require("fs"),
 	outputFiles = [],
 	ast, output, outputRaw;
 
+<<<<<<< HEAD
 if (argv.simple) {
 	outputTemplateFile = "simple.handlebars";
 }
@@ -90,6 +96,15 @@ if (argv.simple) {
 if (argv.plain) {
 	outputTemplateFile = "plain.handlebars";
 }
+=======
+if (argv.plain) {
+	outputTemplateFile = "plain.handlebars";
+}
+
+if (argv.simple) {
+	outputTemplateFile = "simple.handlebars";
+}
+>>>>>>> added --plain option for plain module code without add() wrapper
 
 // Convert the known list into a hash
 if (argv.known && !Array.isArray(argv.known)) {
@@ -158,7 +173,11 @@ outputRaw = handlebars.render(outputTemplate, {
 	templates: precompiledTemplates
 });
 
+<<<<<<< HEAD
 if (argv.min && !argv.plain) {
+=======
+if (argv.min || (argv.output && !argv.plain)) {
+>>>>>>> added --plain option for plain module code without add() wrapper
 	console.log("Minificating templates");
 	output = uglify.parser.parse(outputRaw);
 	output = uglify.uglify.ast_mangle(output);
@@ -175,6 +194,7 @@ if (argv.output) {
 	});
 
 	if (!argv.plain) {
+<<<<<<< HEAD
 
 		outputFiles.push({
 			name: argv.output.replace(".js", "-debug.js"),
@@ -186,6 +206,17 @@ if (argv.output) {
 			content: output
 		});
 
+=======
+		outputFiles.push({
+			name: argv.output.replace(".js", "-debug.js"),
+			content: outputRaw
+		});
+
+		outputFiles.push({
+			name: argv.output.replace(".js", "-min.js"),
+			content: output
+		});
+>>>>>>> added --plain option for plain module code without add() wrapper
 	}
 
 	outputFiles.forEach(function (file) {
