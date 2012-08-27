@@ -26,6 +26,7 @@ Options:
   -s, --simple     Output template function only.                                             [boolean]
   -r, --root       Template root. Base value that will be stripped from template names.       [string]
   -n, --namespace  Namespace in which the templates object will reside under the Y instance.  [string]  [default: "Handlebars"]
+  -p, --plain      Plain module output without YUI.add(...) wrapper function.                 [boolean]
 ```
 
 #### Simple mode

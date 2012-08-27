@@ -1,6 +1,6 @@
 {
     "name": "yhandlebars",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Command line tool to precompile Handlebars templates as YUI modules",
     "author": "Christian Hermann Quinders <c.quinders@gmail.com>",
     "bugs": { "web" : "http://github.com/clickholddrag/yhandlebars/issues" },

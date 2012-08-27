@@ -37,6 +37,11 @@ var optimist = require("optimist")
 				"description": "Namespace in which the templates object will reside under the Y instance.",
 				"alias": "namespace",
 				"default": "Handlebars"
+			},
+			"p": {
+				"type": "boolean",
+				"description": "Plain module output without YUI.add(...) wrapper function.",
+				"alias": "plain"
 			}
 		})
 
@@ -73,11 +78,18 @@ var fs = require("fs"),
 	known = {},
 	precompiledTemplates = [],
 	moduleName = (argv.output) ? argv.output.split("/").pop().replace(".js", "") : "handlebars-templates",
-	outputTemplateFile = (argv.simple) ? "simple.handlebars" : "module.handlebars",
+	outputTemplateFile = "module.handlebars",
 	outputTemplate,
 	outputFiles = [],
 	ast, output, outputRaw;
 
+if (argv.simple) {
+	outputTemplateFile = "simple.handlebars";
+}
+
+if (argv.plain) {
+	outputTemplateFile = "plain.handlebars";
+}
 
 // Convert the known list into a hash
 if (argv.known && !Array.isArray(argv.known)) {
@@ -146,7 +158,7 @@ outputRaw = handlebars.render(outputTemplate, {
 	templates: precompiledTemplates
 });
 
-if (argv.min || argv.output) {
+if (argv.min && !argv.plain) {
 	console.log("Minificating templates");
 	output = uglify.parser.parse(outputRaw);
 	output = uglify.uglify.ast_mangle(output);
@@ -162,15 +174,19 @@ if (argv.output) {
 		content: outputRaw
 	});
 
-	outputFiles.push({
-		name: argv.output.replace(".js", "-debug.js"),
-		content: outputRaw
-	});
+	if (!argv.plain) {
 
-	outputFiles.push({
-		name: argv.output.replace(".js", "-min.js"),
-		content: output
-	});
+		outputFiles.push({
+			name: argv.output.replace(".js", "-debug.js"),
+			content: outputRaw
+		});
+
+		outputFiles.push({
+			name: argv.output.replace(".js", "-min.js"),
+			content: output
+		});
+
+	}
 
 	outputFiles.forEach(function (file) {
 		writeTemplatesToFile(file.name, file.content);

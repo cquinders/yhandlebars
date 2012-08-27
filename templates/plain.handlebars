@@ -1,0 +1,4 @@
+var templates = Y.namespace("{{{namespace}}}.templates");
+{{#each templates}}
+templates["{{{name}}}"] = Y.Handlebars.template({{{template}}});
+{{/each}}
