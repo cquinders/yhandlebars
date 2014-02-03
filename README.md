@@ -43,7 +43,7 @@ just pass a namespace argument like this `-n NS` and the templates will be store
 `Y.NS.templates`.
 
 ### Mustache compatible
-The compiler will also precompile `*.mustache` files.
+The compiler will also precompile `*.mustache` and  `*.hbs` files.
 
 ## Using templates in YUI
 
