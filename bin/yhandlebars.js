@@ -103,13 +103,14 @@ if (argv.known) {
 
 function processTemplate(template, root) {
 	var path = template,
-		stat = fs.statSync(path);
+		stat = fs.statSync(path),
+		extensions = /\.handlebars$|\.mustache$|\.hbs/;
 
 	if (stat.isDirectory()) {
 		fs.readdirSync(template).map(function (file) {
 			var path = template + "/" + file;
 
-			if (/\.handlebars$|\.mustache$/.test(path) || fs.statSync(path).isDirectory()) {
+			if (extensions.test(path) || fs.statSync(path).isDirectory()) {
 				processTemplate(path, root || template);
 			}
 		});
@@ -126,8 +127,8 @@ function processTemplate(template, root) {
 		} else if (template.indexOf(root) === 0) {
 			template = template.substring(root.length + 1);
 		}
-		template = template.replace(/\.handlebars$|\.mustache$/, "");
-		
+		template = template.replace(extensions, "");
+
 		precompiledTemplates.push({
 			name: template,
 			template: handlebars.precompile(data, options)
